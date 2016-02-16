@@ -4,7 +4,7 @@
   "description": "ourikas server",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha 'test/integration/**/*.js'"
   },
   "author": "Mauricio Melo",
   "license": "ISC",
@@ -19,9 +19,10 @@
     "chai": "^3.5.0",
     "chai-http": "^2.0.1",
     "database-cleaner": "^0.11.0",
-    "factory_girl": "^0.2.2",
+    "factory-girl": "^2.2.2",
     "faker": "^3.0.1",
     "mocha": "^2.4.5",
+    "require-dir": "^0.3.0",
     "supertest": "^1.2.0"
   }
 }

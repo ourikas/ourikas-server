@@ -1,30 +1,27 @@
 'use strict';
 
-process.env.NODE_ENV = 'test';
-
-var chai = require('chai');
-var chaiHttp = require('chai-http');
-var status = require('http-status');
-var request = require('supertest');
-var databaseCleaner = require('./helpers/database-cleaner');
-var app = require('../server');
-var expect = chai.expect;
+var chai = require('chai'),
+    chaiHttp = require('chai-http'),
+    status = require('http-status'),
+    request = require('supertest'),
+    helper = require('../test-helper'),
+    app = require('../../server'),
+    factory = require('factory-girl'),
+    expect = chai.expect;
 
 chai.use(chaiHttp);
-
+helper.factories.findDefinitions();
 
 describe('Routing', function() {
 
   beforeEach(function (done) {
-    databaseCleaner.clean();
+    helper.databaseCleaner.clean();
     done();
   });
 
   describe('Company', () => {
     it('should list ALL companies on /companies GET', function (done) {
-      var company = {
-        name: 'Ourikas'
-      };
+      var company = factory.buildSync('company');
 
       request(app)
         .get('/api/v1/companies')
