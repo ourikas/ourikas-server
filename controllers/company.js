@@ -12,7 +12,7 @@ exports.createCompanies = function(req, res) {
       res.send(err);
 
     res.status(status.CREATED)
-       .json({ message: 'Company added to the locker!', data: company });
+       .json({ message: 'Company added!', data: company });
   });
 };
 
@@ -26,7 +26,7 @@ exports.getCompanies = function(req, res) {
 };
 
 exports.getCompany = function(req, res) {
-  Company.findById(req.params.company_id, function(err, company) {
+  Company.findById(req.params.id, function(err, company) {
     if (err)
       res.send(err);
 
@@ -55,6 +55,7 @@ exports.deleteCompany = function(req, res) {
     if (err)
       res.send(err);
 
-    res.json({ message: 'Company removed!' });
   });
+
+  res.json({ message: 'Company removed!' });
 };
