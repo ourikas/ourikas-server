@@ -1,9 +1,11 @@
 var mongoose = require('mongoose'),
-    requireDir = require('require-dir');
+    requireDir = require('require-dir'),
+    DatabaseCleaner = require('database-cleaner'),
+    databaseCleaner = new DatabaseCleaner('mongodb');
 
 exports.databaseCleaner = {
   clean: function (callback) {
-    mongoose.connection.db.dropDatabase(function (err) {
+    databaseCleaner.clean(mongoose.connections[0].db, function() {
       callback();
     });
   }
