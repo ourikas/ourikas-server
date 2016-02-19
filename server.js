@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
@@ -32,6 +34,6 @@ router.route('/companies/:id')
   .put(companiesController.updateCompany)
   .delete(companiesController.deleteCompany);
 
-console.log('ourikas server is running on port ' + port);
+console.log(`ourikas server is running on port ${port} in ${process.env.NODE_ENV} mode`);
 
 module.exports = app;
