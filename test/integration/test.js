@@ -1,19 +1,19 @@
 'use strict';
 
-var chai = require('chai'),
-    chaiHttp = require('chai-http'),
-    status = require('http-status'),
-    request = require('supertest'),
-    helper = require('../test-helper'),
-    app = require('../../server'),
-    factory = require('factory-girl'),
-    Company = require('../../models/company'),
-    expect = chai.expect;
+var chai = require('chai');
+var chaiHttp = require('chai-http');
+var status = require('http-status');
+var request = require('supertest');
+var helper = require('../test-helper');
+var app = require('../../server');
+var factory = require('factory-girl');
+var Company = require('../../models/company');
+var expect = chai.expect;
 
 chai.use(chaiHttp);
 helper.factories.findDefinitions();
 
-describe('Routing', function() {
+describe('Routing', function () {
 
   afterEach(function (done) {
     helper.databaseCleaner.clean(done);
@@ -24,7 +24,7 @@ describe('Routing', function() {
       factory.createMany('company', 10, function (err, companies) {
         request(app)
           .get('/api/v1/companies')
-          .end(function(err, res) {
+          .end(function (err, res) {
             expect(err).to.not.exist;
             expect(res).to.have.status(status.OK);
             expect(res.body.length).to.equal(10);
@@ -32,6 +32,7 @@ describe('Routing', function() {
               expect(res.body[i]._id).to.equal(companies[i]._id.toString());
               expect(res.body[i].name).to.equal(companies[i].name);
             }
+
             done();
           });
       });
@@ -41,7 +42,7 @@ describe('Routing', function() {
       factory.create('company', function (err, company) {
         request(app)
         .get('/api/v1/companies/' + company._id)
-        .end(function(err, res) {
+        .end(function (err, res) {
           expect(err).to.not.exist;
           expect(res).to.have.status(status.OK);
           expect(res.body.name).to.equal(company.name);
@@ -52,12 +53,12 @@ describe('Routing', function() {
     });
 
     it('should add a SINGLE company on /companies POST', function (done) {
-      var company = { name: 'Ourikas' }
+      var company = { name: 'Ourikas' };
       request(app)
         .post('/api/v1/companies')
         .set('Content-Type', 'application/x-www-form-urlencoded')
         .send(company)
-        .end(function(err, res) {
+        .end(function (err, res) {
           expect(err).to.not.exist;
           expect(res).to.have.status(status.CREATED);
           expect(res.body.message).to.equal('Company added!');
@@ -68,19 +69,19 @@ describe('Routing', function() {
     });
 
     it('should update a SINGLE company on /companies/:id PUT', function (done) {
-      let updatedName = 'Updated Name'
+      let updatedName = 'Updated Name';
       factory.create('company', function (err, company) {
         expect(company.name).to.not.equal(updatedName);
         request(app)
         .put('/api/v1/companies/' + company._id)
         .set('Content-Type', 'application/x-www-form-urlencoded')
-        .send({name: updatedName})
-        .end(function(err, res) {
+        .send({ name: updatedName })
+        .end(function (err, res) {
           expect(err).to.not.exist;
           expect(res).to.have.status(status.OK);
-          Company.findById(company._id, function(err, data) {
+          Company.findById(company._id, function (err, data) {
             expect(err).to.not.exist;
-            expect(data.name).to.be.equal(updatedName)
+            expect(data.name).to.be.equal(updatedName);
             done();
           });
         });
@@ -91,12 +92,12 @@ describe('Routing', function() {
       factory.create('company', function (err, company) {
         request(app)
         .delete('/api/v1/companies/' + company._id)
-        .end(function(err, res) {
+        .end(function (err, res) {
           expect(err).to.not.exist;
           expect(res).to.have.status(status.OK);
           expect(res.body.message).to.equal('Company removed!');
 
-          Company.findById(company._id, function(err, data) {
+          Company.findById(company._id, function (err, data) {
             expect(err).to.not.exist;
             expect(data).to.not.exist;
             done();

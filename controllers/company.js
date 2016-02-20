@@ -1,13 +1,12 @@
 const Company = require('../models/company');
 const status = require('http-status');
 
-
-exports.createCompanies = function(req, res) {
+exports.createCompanies = function (req, res) {
   var company = new Company();
 
   company.name = req.body.name;
 
-  company.save(function(err) {
+  company.save(function (err) {
     if (err)
       res.send(err);
 
@@ -16,8 +15,8 @@ exports.createCompanies = function(req, res) {
   });
 };
 
-exports.getCompanies = function(req, res) {
-  Company.find(function(err, companies) {
+exports.getCompanies = function (req, res) {
+  Company.find(function (err, companies) {
     if (err)
       res.send(err);
 
@@ -25,8 +24,8 @@ exports.getCompanies = function(req, res) {
   });
 };
 
-exports.getCompany = function(req, res) {
-  Company.findById(req.params.id, function(err, company) {
+exports.getCompany = function (req, res) {
+  Company.findById(req.params.id, function (err, company) {
     if (err)
       res.send(err);
 
@@ -34,14 +33,14 @@ exports.getCompany = function(req, res) {
   });
 };
 
-exports.updateCompany = function(req, res) {
-  Company.findById(req.params.id, function(err, company) {
+exports.updateCompany = function (req, res) {
+  Company.findById(req.params.id, function (err, company) {
     if (err)
       res.send(err);
 
     company.name = req.body.name;
 
-    company.save(function(err) {
+    company.save(function (err) {
       if (err)
         res.send(err);
 
@@ -50,8 +49,8 @@ exports.updateCompany = function(req, res) {
   });
 };
 
-exports.deleteCompany = function(req, res) {
-  Company.findByIdAndRemove(req.params.id, function(err) {
+exports.deleteCompany = function (req, res) {
+  Company.findByIdAndRemove(req.params.id, function (err) {
     if (err)
       res.send(err);
 

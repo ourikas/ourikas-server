@@ -15,13 +15,13 @@ var router = express.Router();
 mongoose.connect(config.db.mongodb);
 
 app.use(bodyParser.urlencoded({
-  extended: true
+  extended: true,
 }));
 
 app.use('/api/v1', router);
 app.listen(port);
 
-router.get('/', function(req, res) {
+router.get('/', function (req, res) {
   res.json({ message: 'Welcome to ourikas server API :)' });
 });
 
