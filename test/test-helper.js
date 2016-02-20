@@ -5,9 +5,7 @@ var mongoose = require('mongoose'),
 
 exports.databaseCleaner = {
   clean: function (callback) {
-    databaseCleaner.clean(mongoose.connections[0].db, function() {
-      callback();
-    });
+    databaseCleaner.clean(mongoose.connections[0].db, callback);
   }
 }
 

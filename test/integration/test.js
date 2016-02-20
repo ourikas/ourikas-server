@@ -16,9 +16,7 @@ helper.factories.findDefinitions();
 describe('Routing', function() {
 
   beforeEach(function (done) {
-    helper.databaseCleaner.clean(function () {
-      done();
-    });
+    helper.databaseCleaner.clean(done);
   });
 
   describe('Companies', () => {
