@@ -4,6 +4,7 @@
   "description": "ourikas server",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "NODE_ENV=test mocha 'test/integration/**/*.js'",
     "lint": "jscs ."
   },
@@ -24,6 +25,7 @@
     "faker": "^3.0.1",
     "jscs": "^2.10.1",
     "mocha": "^2.4.5",
+    "nodemon": "^1.9.0",
     "require-dir": "^0.3.0",
     "supertest": "^1.2.0"
   }
