@@ -15,7 +15,7 @@ helper.factories.findDefinitions();
 
 describe('Routing', function() {
 
-  beforeEach(function (done) {
+  afterEach(function (done) {
     helper.databaseCleaner.clean(done);
   });
 
