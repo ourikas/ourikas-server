@@ -1,7 +1,7 @@
 const Company = require('../models/company');
 const status = require('http-status');
 
-exports.createCompanies = function (req, res) {
+exports.create = function (req, res) {
   var company = new Company();
 
   company.name = req.body.name;
@@ -15,7 +15,7 @@ exports.createCompanies = function (req, res) {
   });
 };
 
-exports.getCompanies = function (req, res) {
+exports.list = function (req, res) {
   Company.find(function (err, companies) {
     if (err)
       res.send(err);
@@ -24,7 +24,7 @@ exports.getCompanies = function (req, res) {
   });
 };
 
-exports.getCompany = function (req, res) {
+exports.read = function (req, res) {
   Company.findById(req.params.id, function (err, company) {
     if (err)
       res.send(err);
@@ -33,7 +33,7 @@ exports.getCompany = function (req, res) {
   });
 };
 
-exports.updateCompany = function (req, res) {
+exports.update = function (req, res) {
   Company.findById(req.params.id, function (err, company) {
     if (err)
       res.send(err);
@@ -49,7 +49,7 @@ exports.updateCompany = function (req, res) {
   });
 };
 
-exports.deleteCompany = function (req, res) {
+exports.delete = function (req, res) {
   Company.findByIdAndRemove(req.params.id, function (err) {
     if (err)
       res.send(err);

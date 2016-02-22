@@ -6,12 +6,12 @@ router.get('/', function (req, res) {
 });
 
 router.route('/companies')
-  .post(companies.createCompanies)
-  .get(companies.getCompanies);
+  .post(companies.create)
+  .get(companies.list);
 
 router.route('/companies/:id')
-  .get(companies.getCompany)
-  .put(companies.updateCompany)
-  .delete(companies.deleteCompany);
+  .get(companies.read)
+  .put(companies.update)
+  .delete(companies.delete);
 
 module.exports = router;
