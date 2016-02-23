@@ -3,7 +3,7 @@
 var User = require('../models/user');
 var status = require('http-status');
 var config = require('../config/config');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
 const TOKEN_EXPIRATION = '1d';
