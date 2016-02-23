@@ -3,6 +3,7 @@
 
 [![Join the chat at https://gitter.im/ourikas/ourikas-server](https://badges.gitter.im/ourikas/ourikas-server.svg)](https://gitter.im/ourikas/ourikas-server?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://snap-ci.com/ourikas/ourikas-server/branch/master/build_image)](https://snap-ci.com/ourikas/ourikas-server/branch/master)
+[![Dependencies Status](https://david-dm.org/ourikas/ourikas-server.svg)](https://david-dm.org/ourikas/ourikas-server)
 
 Ourikas RESTful API Server
 
