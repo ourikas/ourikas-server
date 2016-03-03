@@ -1,5 +1,7 @@
+var path = require('path');
 var companies = require('../controllers/company');
-var ensureAuthenticated = require('../controllers/authenticate').ensureAuthenticated;
+var auth = require(path.resolve('modules/authenticate/controllers/authenticate'));
+var ensureAuthenticated = auth.ensureAuthenticated;
 var router = require('express').Router();
 
 router.route('/companies')

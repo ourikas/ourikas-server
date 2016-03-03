@@ -1,7 +1,8 @@
+var path = require('path');
 var users = require('../controllers/user');
-var auth = require('../controllers/authenticate');
-var router = require('express').Router();
+var auth = require(path.resolve('modules/authenticate/controllers/authenticate'));
 var ensureAuthenticated = auth.ensureAuthenticated;
+var router = require('express').Router();
 
 router.post('/authenticate', auth.authenticate);
 

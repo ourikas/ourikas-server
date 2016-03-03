@@ -4,15 +4,15 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 var status = require('http-status');
 var request = require('supertest');
-var helper = require('../test-helper');
-var app = require('../../server');
-var factory = require('factory-girl');
+var path = require('path');
+var helper = require(path.resolve('config/lib/test-helper'));
+var app = require(path.resolve('server'));
+var factory = helper.factory();
 var User = require('../../models/user');
 var _ = require('lodash');
 var expect = chai.expect;
 
 chai.use(chaiHttp);
-helper.factories.findDefinitions();
 
 describe('Routing', function () {
   var auth;

@@ -6,17 +6,12 @@ var DatabaseCleaner = require('database-cleaner');
 var databaseCleaner = new DatabaseCleaner('mongodb');
 var factory = require('factory-girl');
 var request = require('supertest');
-var app = require('../server');
+var app = require('../../server');
+var factories = require('./factories');
 
 exports.databaseCleaner = {
   clean: function (callback) {
     databaseCleaner.clean(mongoose.connections[0].db, callback);
-  },
-};
-
-exports.factories = {
-  findDefinitions: function () {
-    requireDir('./factories');
   },
 };
 
@@ -45,4 +40,9 @@ exports.authenticate = function (callback) {
       return callback(null, auth);
     });
   });
+};
+
+exports.factory = function () {
+  factories.findDefinitions();
+  return require('factory-girl');
 };

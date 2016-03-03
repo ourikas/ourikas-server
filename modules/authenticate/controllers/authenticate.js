@@ -1,8 +1,9 @@
 'use strict';
 
-var User = require('../models/user');
+var path = require('path');
+var User = require(path.resolve('modules/users/models/user'));
 var status = require('http-status');
-var config = require('../config/config');
+var config = require(path.resolve('config/config'));
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 

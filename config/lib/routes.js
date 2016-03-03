@@ -1,13 +1,16 @@
 'use strict';
 
-var requireDir = require('require-dir');
+var glob = require('glob');
+var path = require('path');
+var config = require('../config');
 var _ = require('lodash');
 var router = require('express').Router();
 
-var routes = _.values(requireDir('../../routes'));
+var routesPaths = glob.sync(config.assets.routes);
 
-routes.forEach(function (route) {
-  router.use('/', route);
+routesPaths.forEach(function (route) {
+  let routePath = path.resolve(route);
+  router.use('/', require(routePath));
 });
 
 module.exports = router;
